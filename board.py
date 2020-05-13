@@ -23,6 +23,12 @@ class Board:
                 return False
         else:
             return False
+
+    def check_full_board(self):
+        if ('-' not in self.layout[0]) and ('-' not in self.layout[1]) and ('-' not in self.layout[2]):
+            return True
+        else:
+            return False
     
     def check_winning_board(self):
         layout = self.layout
