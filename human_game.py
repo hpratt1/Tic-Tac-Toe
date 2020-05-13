@@ -1,5 +1,5 @@
-import board
-import player
+from board import Board
+from player import Player
 
 class Human_Game: 
     
@@ -44,6 +44,9 @@ class Human_Game:
         else:
                 self.board.insert_O(row, col)
         self.switchTurn()
+
+    def check_tie(self):
+        return self.board.check_full_board()
     
     def check_winner(self):
         return self.board.check_winning_board()
@@ -53,6 +56,9 @@ class Human_Game:
         while(self.check_winner() == False):
             self.take_turn()
             self.display_board()
+            if (self.check_tie() and (self.check_winner() == False)):
+                print("Game Over. The result is a tie.")
+                return
         self.switchTurn()
         winner_num = self.getTurn()
         print("Player " + str(winner_num) + " Wins!")
